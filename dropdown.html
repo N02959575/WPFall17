@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dropdown Practice</title>
+        <style>
+            h2 {
+                font-style: italic;
+                font-family: monospace;
+            }
+            .bar{
+                list-style-type: none;
+                width: 100%;
+                background-color: #ff0000;
+            }
+            .menu {
+                position: relative;
+                display: inline-block;
+                color: #ffffff;
+                background-color: #ff0000;
+                margin-right: 15px;
+            }
+            .menu-content {
+                display: none;
+                position: absolute;
+                width: 100px;
+                background-color: grey;
+                border: 1px solid #daa520;
+                padding: 0;
+            }
+            .menu-show{
+                display: block;
+                padding: 5px;
+            }
+            .menu:hover .menu-content {
+                display: block;
+            }
+            .menu-show:hover {
+                background-color: #fa4c4c;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Welcome to my drop down menu!</h2>
+        <ul class = "bar">
+            <li class = "menu">
+                Open
+                <ul class = "menu-content">
+                    <li class = "menu-show"><a herf = "#">Close me!</a></li>
+                    <li class = "menu-show"><a herf = "#">Hey!</a></li>
+                </ul>
+            </li>
+            <li class = "menu">
+                    Look Here
+                    <ul class = "menu-content">
+                        <li class = "menu-show"><a herf = "#">Just Kidding!</a></li>
+                        <li class = "menu-show"><a herf = "#">Hey!</a></li>
+                    </ul>
+            </li>
+            <li class = "menu">
+                    Stop it!
+                    <ul class = "menu-content">
+                        <li class = "menu-show"><a herf = "#">Nothing here!</a></li>
+                        <li class = "menu-show"><a herf = "#">Hey!</a></li>
+                    </ul>
+            </li>
+            <li class = "menu">
+                    Don't do it!
+                    <ul class = "menu-content">
+                            <img src="found.jpg" alt="You Found Me" width="300" height="200">
+                    </ul>
+            </li>
+        </ul>
+    </body>
+</html>
