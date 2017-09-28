@@ -1,0 +1,23 @@
+{
+  "name": "wpfall17",
+  "version": "1.0.0",
+  "description": "what do you meme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass jquery-mockup/src --output jquery-mockup/dist --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/N02959575/WPFall17.git"
+  },
+  "dependencies": {
+    "express": "^4.15.4",
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.7.0",
+    "webpack": "^3.6.0",
+    "node-sass": "^4.5.3"
+  }
+}
