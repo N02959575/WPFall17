@@ -1,4 +1,5 @@
-# WPFall17
+# 2017fall
 what do you meme
-## this is a game
+
+## This is a game
 Based on Bubble Talk
