@@ -1,7 +1,7 @@
 const express = require("express");
 const game = require("./gameObject");
 
-router = express.Router();
+const router = express.Router();
 
 router
     .get("/pictures", (req, res) => res.send(game.pictures))
