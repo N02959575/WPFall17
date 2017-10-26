@@ -1,52 +1,81 @@
 import * as $ from 'jquery';
 
-export class Exercise{
+export class Quote {
     text: string
 }
 
-export class User {
-    name: string = "Linkle";
-    exercise:  Exercise[] = [];
-    completed: number = 0;
-    drawExercise(){
-        $("#my-exercises").html(this.exercise.map(x=> `<li class="list-group-item">${x.text}</li>`).join(""))
+export class Player {
+    name: string = "Moshe Plotkin";
+    quotes: Quote[] = [];
+    score: number = 0;
+
+    drawQuotes(){
+        $("#my-quotes").html(
+            this.quotes.map( x => `<li class="list-group-item">${x.text}</li>` ).join("")
+        );
     }
 }
 
 export class Room {
-    players: User[] = [new User(), new User()];
-    picture: string = "http://www.zelda.com/assets/images/centerstage/hyrule-warriors-legends/hyrule-warriors-legends-characters.png";
-    exercise: Exercise[] = [];
-    drawPicture(){
+    players: Player[] = [new Player(), new Player()];
+    dealer: Player;
+    picture: string;
+    quotes: Quote[] = [];
+
+    drawPicture() {
         $("#picture").attr("src", this.picture);
     }
-    drawExercise(){
-        $("#completed-exercises").html(this.exercise.map(x=> `<li class="list-group-item">${x.text}</li>`).join(""))
+    drawQuotes(){
+        $("#played-quotes").html(
+            this.quotes.map( x => `<li class="list-group-item">${x.text}</li>` ).join("")
+        );
+    }
+    drawPlayers(){
+        $("#players").html(
+            this.players.map( x => `<li class="list-group-item">${x.name}</li>` ).join("")
+        );
     }
 }
 
 export class Game {
-    user: User[] = [];
-    pictures: string[] = [
-        "http://vignette1.wikia.nocookie.net/vsbattles/images/6/6a/The-Legend-Of-Zelda-Aniversary-HD.jpg/revision/latest?cb=20151220021950",
-        "http://www.dan-dare.org/FreeFun/Images/ZeldaWallpaper800.jpg",
-        "http://www.zelda.com/assets/images/centerstage/hyrule-warriors-legends/hyrule-warriors-legends-characters.png"
-    ];
-    exercise: Exercise[] = [
-        {text: "When you wake up and want to destroy the world!"},
-        {text: "When you just can't give less of a fudge"},
-        {text: "I always win at losing"},
-        {text: "Nice Approach"}
-    ];
+    players: Player[] = [];
+    pictures: string[] = [];
+    quotes: Quote[] = [];
+
+    init() {
+        return $.when(
+            $.getJSON("/game/pictures").done( data => {
+                this.pictures = data;
+            }),
+            $.getJSON("/game/quotes").done( data =>{
+                this.quotes = data;
+            })
+        );
+    }
 }
 
-//controller
+// Controller
 
 const game = new Game();
 const room = new Room();
-const me = new User();
+const me = new Player();
+var i = 0;
 
-room.drawExercise();
+game.init().done(()=>{
+    room.picture = game.pictures[i];
+    room.drawPicture();
+    room.drawQuotes();
+    room.drawPlayers();
 
-me.exercise = game.exercise;
-me.drawExercise();
+    me.quotes = game.quotes;
+    me.drawQuotes();
+
+});
+
+
+$("#cmd-flip").click(function(e){
+    e.preventDefault();
+    i++;
+    room.picture = game.pictures[i];
+    room.drawPicture();
+})
