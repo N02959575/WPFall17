@@ -7,7 +7,7 @@ module.exports = {
     quotes: [
         { text: "Get me out of here" },
         { text: "They're just fine" },
-
+        { text: "Please kill me" }
     ]
     
 }
