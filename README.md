@@ -1,5 +1,5 @@
 # 2017fall
-what do you meme
+Exercise Tracking Website
 
-## This is a game
-Based on Bubble Talk
+## This is a project for web programming
+By Mario A. Mena
