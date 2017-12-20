@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+
+          
+          <div class="card" >
+              <div class="card-header">
+                  Exercises
+              </div>
+              <ul class="list-group list-group-flush" id="my-exercises" >
+                    
+                <li *ngFor="let x of exercises; index as i" 
+                    class="list-group-item"
+                    (click)="submitExercise($event, x, i)">
+                    <a href="#" class="list-group-item list-group-item-action">{{x.text}}</a>
+                </li>
+              </ul>
+          </div>
+
+      </div>
+      <div class="col-md-3 ml-md-auto">
+            
+                      
+                      <div class="card" >
+                          <div class="card-header">
+                              My Completed Exercises
+                          </div>
+                          <ul class="list-group list-group-flush" id="my-exercises" >
+                                
+                            <li *ngFor="let x of completedExercises; index as i" 
+                                class="list-group-item">
+                                <a class="list-group-item list-group-item-action">{{x.text}}</a>
+                                <a class="btn btn-sm btn-danger" (click)="removeExercise($event, i)">Remove</a>
+                            </li>
+                          </ul>
+                      </div>
+            
+                  </div>
+  </div>
+</div>
